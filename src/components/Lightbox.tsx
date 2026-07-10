@@ -9,6 +9,7 @@ import {
   mediaInfo,
   posterSrc,
   timecode,
+  youtubeEmbed,
   type Work,
 } from "@/data/works";
 import { useLang } from "@/lib/i18n";
@@ -70,7 +71,15 @@ export default function Lightbox({
             className="relative z-10 flex min-h-0 flex-1 items-center justify-center px-4 pb-4"
             onClick={(e) => e.stopPropagation()}
           >
-            {hasLocalMedia(work.id) ? (
+            {work.yt ? (
+              <iframe
+                src={youtubeEmbed(work.id)}
+                allow="autoplay; fullscreen"
+                allowFullScreen
+                title={t(work.title)}
+                className="aspect-video w-full max-w-5xl border-0 bg-screen"
+              />
+            ) : hasLocalMedia(work.id) ? (
               <video
                 src={fullSrc(work.id)}
                 poster={posterSrc(work.id)}

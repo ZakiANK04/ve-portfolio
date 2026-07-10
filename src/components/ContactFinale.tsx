@@ -10,7 +10,7 @@ export default function ContactFinale() {
   const { t, lang } = useLang();
 
   const colophon = [
-    { label: "LINKEDIN", value: "AOUANOUK", href: profile.linkedin },
+    { label: "LINKEDIN", value: "AOUANOUK AHCENE ZAKARIA", href: profile.linkedin },
     { label: "INSTAGRAM", value: profile.instagramHandle, href: profile.instagram },
     { label: "GITHUB", value: profile.githubHandle, href: profile.github },
     {
@@ -80,7 +80,7 @@ export default function ContactFinale() {
           <p>
             © 2026 {profile.name.toUpperCase()} —{" "}
             {t({
-              en: "CUT, GRADED & SHIPPED IN ALGIERS",
+              en: "EDITED, GRADED & SHIPPED IN ALGIERS",
               fr: "MONTÉ, ÉTALONNÉ & LIVRÉ À ALGER",
             })}
           </p>

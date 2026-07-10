@@ -3,7 +3,7 @@
 import Reveal from "@/components/Reveal";
 import SectionHeader from "@/components/SectionHeader";
 import {
-  hasLocalMedia,
+  hasPoster,
   highlightWorks,
   mediaInfo,
   posterSrc,
@@ -109,7 +109,7 @@ export default function Highlights({ onOpen }: { onOpen: (w: Work) => void }) {
                     className="relative block aspect-video w-full cursor-pointer overflow-hidden bg-screen text-left"
                     aria-label={t(work.title)}
                   >
-                    {hasLocalMedia(work.id) ? (
+                    {hasPoster(work) ? (
                       <FramePlate work={work} />
                     ) : (
                       <DesignedPlate work={work} />

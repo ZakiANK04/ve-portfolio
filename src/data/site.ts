@@ -42,8 +42,8 @@ export const heroTitles: { text: Bi; rule: "after" | "before" | "none" }[] = [
 
 /** The contact finale statement, set huge over black. */
 export const statement: Bi = {
-  en: "Video editor & motion designer based in Algiers — cutting films, idents and campaigns for IEEE, VIC, IEC & ADC.",
-  fr: "Monteur vidéo & motion designer basé à Alger — films, idents et campagnes pour IEEE, VIC, IEC & ADC.",
+  en: "The camera remembers everything. The edit decides what becomes unforgettable.",
+  fr: "La caméra se souvient de tout. Le montage décide de ce qui devient inoubliable.",
 };
 
 export const workTogether: Bi = {
@@ -96,7 +96,7 @@ export const interview: { q: Bi; a: Bi }[] = [
   {
     q: { en: "How did this start?", fr: "Comment ça a commencé ?" },
     a: {
-      en: "With a deadline nobody else wanted. A club event needed a video, someone asked around, and I said yes before I really knew what I was doing. The edit worked, the next event asked for a bigger one — and somewhere between IEEE recaps and VIC game jams, while studying Data Science & AI at ENP Algiers, cutting stopped being a favor and became the craft I take most seriously.",
+      en: "With a deadline nobody else wanted. A club event needed a video, someone asked around, and I said yes before I really knew what I was doing. The edit worked, the next event asked for a bigger one — and somewhere between IEEE recaps and VIC game jams, while studying Data Science & AI at ENP Algiers, editing stopped being a favor and became the craft I take most seriously.",
       fr: "Par une deadline dont personne ne voulait. Un événement de club avait besoin d’une vidéo, on a demandé autour, et j’ai dit oui avant de vraiment savoir ce que je faisais. Le montage a marché, l’événement suivant en a demandé un plus grand — et quelque part entre les récaps IEEE et les game jams VIC, tout en étudiant la Data Science & IA à l’ENP d’Alger, monter a cessé d’être un coup de main pour devenir le métier que je prends le plus au sérieux.",
     },
   },
@@ -110,7 +110,7 @@ export const interview: { q: Bi; a: Bi }[] = [
   {
     q: { en: "What do clients get — and what’s next?", fr: "Qu’obtiennent les clients — et la suite ?" },
     a: {
-      en: "Hand me a messy folder of rushes and a brutal deadline — that’s home ground. People come back for three things: the story I find in their footage, the speed it ships at, and the fact that they always know where the project stands. Next: a studio or agency floor, bigger productions, a team to cut with.",
+      en: "Hand me a messy folder of rushes and a brutal deadline — that’s home ground. People come back for three things: the story I find in their footage, the speed it ships at, and the fact that they always know where the project stands. Next: a studio or agency floor, bigger productions, a team to edit with.",
       fr: "Donnez-moi un dossier de rushes en vrac et une deadline brutale — c’est mon terrain. On revient vers moi pour trois choses : l’histoire que je trouve dans les images, la vitesse de livraison, et le fait de toujours savoir où en est le projet. La suite : un studio ou une agence, des productions plus ambitieuses, une équipe avec qui monter.",
     },
   },

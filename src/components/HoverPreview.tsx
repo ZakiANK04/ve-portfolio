@@ -3,6 +3,7 @@
 import { useRef, useState } from "react";
 import {
   hasLocalMedia,
+  hasPoster,
   posterSrc,
   previewSrc,
   type Work,
@@ -74,6 +75,14 @@ export default function HoverPreview({
             PREVIEW
           </span>
         </>
+      ) : hasPoster(work) ? (
+        /* No playable local media, but a real poster exists. */
+        <img
+          src={posterSrc(work.id)}
+          alt={t(work.title)}
+          loading="lazy"
+          className="block h-full w-full object-cover"
+        />
       ) : (
         /* No local media yet — a film slate stands in. */
         <span className="flex h-full w-full flex-col justify-between p-4">

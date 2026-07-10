@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "ZAKI — Video Editor & Motion Designer",
   description:
-    "Ahcene Zakaria Aouanouk cuts event films, idents and campaigns for IEEE, VIC, IEC, ADC and more. The Motion Issue — Algiers, 2026.",
+    "Ahcene Zakaria Aouanouk edits event films, idents and campaigns for IEEE, VIC, IEC, ADC and more. The Motion Issue — Algiers, 2026.",
 };
 
 export default function RootLayout({

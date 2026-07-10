@@ -26,4 +26,5 @@ export const catalogue = [
   { id: "1gen6vI5vdYjcf3qepVOc1IJ0oM7w05DR", file: "ieee-recrutement.mp4" },
   { id: "1iARa7W4Z5ECG8u4AU0EbQ0A_x8wgE6YS", file: "ieee2024recap.mp4" },
   { id: "1Cg9-KqCjf6G-IXHKAEXB00_Xjx9df10M", file: "sortie-tibhirine.mp4" },
+  { id: "1zyvrmW1PGAjOPAvYp5VMy1YmTeOSzb1o", file: "icc5-why-compete.mp4" },
 ];

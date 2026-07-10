@@ -269,9 +269,7 @@ export default function Toolkit() {
                   <motion.div
                     className="absolute inset-y-1 left-0 bg-ink"
                     initial={reduced ? { width: `${pct}%` } : { width: 0 }}
-                    animate={
-                      run || reduced ? { width: `${pct}%` } : undefined
-                    }
+                    animate={run || reduced ? { width: `${pct}%` } : undefined}
                     transition={{
                       duration: reduced ? 0 : arrive,
                       ease: "linear",

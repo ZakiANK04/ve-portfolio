@@ -20,6 +20,10 @@ export type Work = {
   description?: Bi;
   /** Drive has download disabled — no local media until the original is dropped in. */
   locked?: boolean;
+  /** Hosted on YouTube — `id` is the YouTube video id; lightbox embeds it. */
+  yt?: boolean;
+  /** A poster jpg exists in /posters even though there's no local media. */
+  thumb?: boolean;
 };
 
 type MediaInfo = { duration: number; width: number; height: number };
@@ -34,6 +38,11 @@ export const previewSrc = (id: string) => `/previews/${id}.mp4`;
 export const fullSrc = (id: string) => `/full/${id}.mp4`;
 export const drivePreview = (id: string) =>
   `https://drive.google.com/file/d/${id}/preview`;
+export const youtubeEmbed = (id: string) =>
+  `https://www.youtube.com/embed/${id}?autoplay=1`;
+
+/** A poster frame exists for this work (generated locally or fetched). */
+export const hasPoster = (w: Work) => hasLocalMedia(w.id) || !!w.thumb;
 
 export const timecode = (seconds: number) => {
   const m = Math.floor(seconds / 60);
@@ -51,7 +60,7 @@ export const works: Work[] = [
     tag: { en: "Teaser", fr: "Teaser" },
     genre: { en: "Movie-grade trailer", fr: "Bande-annonce ciné" },
     description: {
-      en: "Commissioned by IEC in April 2025 to announce Algeria Data Cup 4.0 — the first datathon in Algiers. Cut like a film trailer: tension, reveals, and a title card that lands.",
+      en: "Commissioned by IEC in April 2025 to announce Algeria Data Cup 4.0 — the first datathon in Algiers. Edited like a film trailer: tension, reveals, and a title card that lands.",
       fr: "Commandé par l’IEC en avril 2025 pour annoncer l’Algeria Data Cup 4.0 — le premier datathon d’Alger. Monté comme une bande-annonce de film : tension, révélations, et un titre qui claque.",
     },
     client: "IEC",
@@ -92,6 +101,23 @@ export const works: Work[] = [
     locked: true,
   },
   {
+    id: "IOaLjl0B_yU",
+    yt: true,
+    thumb: true,
+    file: "vic-specialities-automobile",
+    title: { en: "ENP Specialities — Automobile", fr: "Spécialités ENP — Automobile" },
+    tag: { en: "Series episode", fr: "Épisode de série" },
+    genre: { en: "Talk series episode", fr: "Épisode d’émission" },
+    description: {
+      en: "An episode of VIC’s ENP Specialities series, where students present their major on camera — this one on automobile engineering. Interview pacing, inserts and titles edited so a curriculum feels like a story.",
+      fr: "Un épisode de la série Spécialités ENP de VIC, où des étudiants présentent leur filière face caméra — ici le génie automobile. Rythme d’interview, inserts et titres montés pour qu’un cursus se raconte comme une histoire.",
+    },
+    client: "VIC",
+    kind: "reel",
+    year: 2025,
+    featured: true,
+  },
+  {
     id: "1Ngi42NR34AObbtBLhXhpCVdVl2gtXa6g",
     file: "CPSP.mp4",
     title: { en: "CPSP — Explained", fr: "CPSP — Expliqué" },
@@ -108,6 +134,15 @@ export const works: Work[] = [
   },
 
   // ——— Archive ———
+  {
+    id: "1zyvrmW1PGAjOPAvYp5VMy1YmTeOSzb1o",
+    file: "icc5-why-compete.mp4",
+    title: { en: "ICC 5.0 — Why You Should Compete", fr: "ICC 5.0 — Pourquoi participer" },
+    tag: { en: "Explainer", fr: "Explicative" },
+    client: "IEC",
+    kind: "reel",
+    year: 2025,
+  },
   {
     id: "1iARa7W4Z5ECG8u4AU0EbQ0A_x8wgE6YS",
     file: "ieee2024recap.mp4",
