@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+/* ————— Faces ————— */
+@font-face {
+  font-family: "Clash Display";
+  src: url("/fonts/clash-display-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Clash Display";
+  src: url("/fonts/clash-display-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/general-sans-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/general-sans-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "General Sans";
+  src: url("/fonts/general-sans-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fragment Mono";
+  src: url("/fonts/fragment-mono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gambetta";
+  src: url("/fonts/gambetta-500-italic.woff2") format("woff2");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ————— Tokens ————— */
+@theme {
+  /* Pristine white canvas — the kinetic minimal skin. */
+  --color-paper: #ffffff;
+  --color-ink: #111013;
+  --color-screen: #0a0a0b;
+  --color-klein: #1b2fe0;
+  /* Klein lifted for dark grounds — same hue, print-legible on screen black. */
+  --color-klein-bright: #7c89ff;
+  --color-signal: #ff3d00;
+  /* Dark enough to pass AA at caption sizes on paper. */
+  --color-stone: #6b6557;
+
+  --font-display: "Clash Display", "Arial Narrow", sans-serif;
+  --font-body: "General Sans", system-ui, sans-serif;
+  --font-mono: "Fragment Mono", ui-monospace, monospace;
+  --font-quote: "Gambetta", Georgia, serif;
+}
+
+/* ————— Base ————— */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-klein);
+  color: var(--color-paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-klein);
+  outline-offset: 3px;
+}
+.on-screen :focus-visible {
+  outline-color: var(--color-paper);
+}
+
+/* ————— Motion & video artifacts ————— */
+
+/* CRT treatment: monochrome phosphor (inverted so the light matte turns
+   black and melts into the section), scanlines, glow, a rare flicker. */
+.crt img {
+  display: block;
+  filter: grayscale(1) invert(1) brightness(1.12) contrast(1.25);
+  image-rendering: pixelated;
+}
+.crt {
+  position: relative;
+  display: inline-block;
+}
+.crt::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.09),
+    transparent 68%
+  );
+}
+.crt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.45) 0 1px,
+    transparent 1px 3px
+  );
+  mix-blend-mode: multiply;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .crt img {
+    animation: crt-flicker 3.4s steps(1) infinite;
+  }
+}
+@keyframes crt-flicker {
+  0%, 91%, 94%, 100% { opacity: 1; }
+  92% { opacity: 0.8; }
+  96% { opacity: 0.92; }
+}
+
+/* Film grain for cinema-black contexts. */
+.film-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.07 0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+@media (prefers-reduced-motion: no-preference) {
+  .film-grain::after {
+    animation: grain-shift 0.9s steps(4) infinite;
+  }
+}
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-4%, 3%); }
+  50% { transform: translate(3%, -4%); }
+  75% { transform: translate(-2%, -2%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Duotone poster panel: klein ground, figure multiplied into ink.
+   White mattes disappear into the panel. */
+.duotone {
+  position: relative;
+  background: var(--color-klein);
+}
+.duotone img {
+  filter: grayscale(1) contrast(1.1);
+  mix-blend-mode: multiply;
+}
+
+/* Halftone sheen over duotone stills. */
+.halftone::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.16;
+  background-image: radial-gradient(circle, var(--color-ink) 1px, transparent 1.1px);
+  background-size: 5px 5px;
+}
+
+/* Monochrome logo treatment: knock out light backgrounds on paper. */
+.logo-mono img {
+  filter: grayscale(1) contrast(1.15);
+  mix-blend-mode: multiply;
+  opacity: 0.85;
+  transition: opacity 150ms ease, filter 150ms ease;
+}
+.logo-mono:hover img {
+  filter: grayscale(0) contrast(1);
+  opacity: 1;
+}
+
+/* The REC marker — a breathing signal dot used only in video moments. */
+.rec-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 9999px;
+  background: var(--color-signal);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .rec-dot {
+    animation: rec-breathe 1.6s ease-in-out infinite;
+  }
+}
+@keyframes rec-breathe {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
